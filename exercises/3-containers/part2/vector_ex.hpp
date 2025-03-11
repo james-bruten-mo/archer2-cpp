@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <iostream>
+#include <string>
+#include <map>
 
 // Here we declare two functions.
 // Provide implementations, in vector_ex.cpp

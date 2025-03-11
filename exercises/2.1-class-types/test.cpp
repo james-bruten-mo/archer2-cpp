@@ -5,25 +5,25 @@
 
 #include "complex.hpp"
 
-TEST_CASE("Complex numbers are constructed real/imag parts readable") {
+TEST_CASE("Complex numbers are constructed real/imaginary parts readable") {
   Complex zero;
   REQUIRE(zero.real() == 0.0);
-  REQUIRE(zero.imag() == 0.0);
+  REQUIRE(zero.imaginary() == 0.0);
 
   Complex one{1.0};
   REQUIRE(one.real() == 1.0);
-  REQUIRE(one.imag() == 0.0);
+  REQUIRE(one.imaginary() == 0.0);
 
   Complex i{0, 1};
   REQUIRE(i.real() == 0.0);
-  REQUIRE(i.imag() == 1.0);
+  REQUIRE(i.imaginary() == 1.0);
 
   Complex z1{1, -83};
   Complex z2 = z1;
   REQUIRE(z1.real() == z2.real());
-  REQUIRE(z1.imag() == z2.imag());
+  REQUIRE(z1.imaginary() == z2.imaginary());
   REQUIRE(z2.real() == 1.0);
-  REQUIRE(z2.imag() == -83.0);
+  REQUIRE(z2.imaginary() == -83.0);
 }
 
 TEST_CASE("Complex numbers can have magnitude computed") {
@@ -37,7 +37,7 @@ void CheckConjReal(double x) {
   Complex z_conj = z.conj();
   REQUIRE(z_conj.equals(z));
 }
-// Pure imaginary => z* == -z
+// Pure imaginaryinary => z* == -z
 void CheckConjImag(double y) {
   Complex z{0.0, y};
   Complex expected{0.0, -y};
@@ -70,13 +70,13 @@ TEST_CASE("Complex numbers can be compared") {
 }
 
 void CheckZplusZeq2Z(Complex z) {
-  Complex expected = Complex{2*z.real(), 2*z.imag()};
+  Complex expected = Complex{2*z.real(), 2*z.imaginary()};
   Complex result = z.add(z);
   REQUIRE(result.equals(expected));
 }
 void CheckZminusZeq0(Complex z) {
   Complex expected = Complex{};
-  Complex z_minus = Complex{-z.real(), -z.imag()};
+  Complex z_minus = Complex{-z.real(), -z.imaginary()};
   Complex result = z.add(z_minus);
   REQUIRE(result.equals(expected));
 }
